@@ -25,14 +25,21 @@ class Form extends Component {
       body: JSON.stringify(lead),
       headers: new Headers({ "Content-Type": "application/json" })
     };
-    fetch(this.props.endpoint, conf).then(response => console.log(response));
+    fetch(this.props.endpoint, conf).then(response => {
+      console.log(response);
+      this.setState({
+        name: "",
+        email: "",
+        message: ""
+      });
+    });
   };
 
   render() {
     const { name, email, message } = this.state;
     return (
       <div className="column">
-        <form onSubmit={this.handleSubmit}>
+        <form id="new-msg-form" onSubmit={this.handleSubmit}>
           <div className="field">
             <label className="label">Name</label>
             <div className="control">
