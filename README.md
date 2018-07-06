@@ -2,7 +2,7 @@
 
 This app tests the integration of Django REST Framework with a React front end. 
 
-# Usage:
+### Usage:
 
 - Create and activate a virtualenv
 - Git clone or download/extract this repo
