@@ -27,6 +27,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "weak-key": "^1.0.0",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"
   }
