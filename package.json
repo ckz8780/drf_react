@@ -19,6 +19,14 @@
   },
   "homepage": "https://github.com/ckz8780/drf_react#readme",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"
   }
