@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+
 class Form extends Component {
   static propTypes = {
     endpoint: PropTypes.string.isRequired
@@ -11,6 +12,8 @@ class Form extends Component {
     email: "",
     message: ""
   };
+
+  baseState = this.state;
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -27,11 +30,7 @@ class Form extends Component {
     };
     fetch(this.props.endpoint, conf).then(response => {
       console.log(response);
-      this.setState({
-        name: "",
-        email: "",
-        message: ""
-      });
+      this.setState(this.baseState);
     });
   };
 

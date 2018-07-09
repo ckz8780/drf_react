@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import DataProvider from "./DataProvider";
 import Table from "./Table";
-import Form from "./Form"
+import Form from "./Form";
 
 const App = () => (
   <React.Fragment>
