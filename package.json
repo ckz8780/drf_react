@@ -24,6 +24,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "cypress": "^3.0.2",
@@ -34,5 +35,6 @@
     "weak-key": "^1.0.0",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"
-  }
+  },
+  "dependencies": {}
 }
