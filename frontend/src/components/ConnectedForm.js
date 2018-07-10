@@ -9,7 +9,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-class ConnectedForm extends Component {
+class Form extends Component {
   static propTypes = {
     endpoint: PropTypes.string.isRequired
   };
@@ -40,8 +40,8 @@ class ConnectedForm extends Component {
         return this.setState({ placeholder: "Something went wrong" });
       }
       console.log(response);
-      this.setState(this.baseState);
       this.props.triggerRefetch(true);
+      this.setState(this.baseState);      
     });
   };
 
@@ -100,6 +100,6 @@ class ConnectedForm extends Component {
   }
 }
 
-connect(null, mapDispatchToProps)(ConnectedForm);
+const ConnectedForm = connect(null, mapDispatchToProps)(Form);
 
 export default ConnectedForm;

@@ -9,7 +9,7 @@ const mapStateToProps = state => {
   };
 };
 
-class ConnectedTable extends Component {
+class Table extends Component {
   static propTypes = {
     endpoint: PropTypes.string.isRequired
   };
@@ -61,6 +61,6 @@ class ConnectedTable extends Component {
 
 }
 
-connect(mapStateToProps) (ConnectedTable);
+const ConnectedTable = connect(mapStateToProps)(Table);
 
 export default ConnectedTable;
