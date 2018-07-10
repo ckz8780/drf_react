@@ -1,17 +1,26 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-class DataProvider extends Component {
+const mapStateToProps = state => {
+  return { 
+    data: state.leads,
+    loaded: false,
+    placeholder: "Loading..."
+  };
+};
+
+class ConnectedDataProvider extends Component {
   static propTypes = {
     endpoint: PropTypes.string.isRequired,
     render: PropTypes.func.isRequired
   };
 
   state = {
-      data: [],
-      loaded: false,
-      placeholder: "Loading..."
-    };
+    data: [],
+    loaded: false,
+    placeholder: "Loading..."
+  };
 
   componentDidMount() {
     fetch(this.props.endpoint)
@@ -30,5 +39,7 @@ class DataProvider extends Component {
     return loaded ? this.props.render(data) : <p>{placeholder}</p>;
   }
 }
+
+const DataProvider = connect(mapStateToProps) (ConnectedDataProvider);
 
 export default DataProvider;
