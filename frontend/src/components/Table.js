@@ -1,9 +1,15 @@
 import React from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import key from "weak-key";
 
+const mapStateToProps = state => {
+  return { 
+    data: state.leads,
+  };
+};
 
-const Table = ({ data }) =>
+const ConnectedTable = ({ data }) =>
   !data.length ? (
     <p>Nothing to show</p>
   ) : (
@@ -28,8 +34,10 @@ const Table = ({ data }) =>
     </div>
   );
 
-Table.propTypes = {
+ConnectedTable.propTypes = {
   data: PropTypes.array.isRequired
 };
+
+const Table = connect(mapStateToProps) (ConnectedTable);
 
 export default Table;
