@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { addLead } from "../js/actions/index";
 
+const mapDispatchToProps = dispatch => {
+  return {
+    addLead: lead => dispatch(addLead(lead))
+  };
+};
 
-class Form extends Component {
+class ConnectedForm extends Component {
   static propTypes = {
     endpoint: PropTypes.string.isRequired
   };
@@ -29,6 +36,9 @@ class Form extends Component {
       headers: new Headers({ "Content-Type": "application/json" })
     };
     fetch(this.props.endpoint, conf).then(response => {
+      if (response.status !== 201) {
+        return this.setState({ placeholder: "Something went wrong" });
+      }
       console.log(response);
       this.setState(this.baseState);
     });
@@ -88,5 +98,7 @@ class Form extends Component {
     );
   }
 }
+
+const Form = connect(null, mapDispatchToProps)(ConnectedForm);
 
 export default Form;
