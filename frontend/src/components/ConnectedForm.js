@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
-// import { addLead } from "../js/actions/index";
+import { triggerRefetch } from "../js/actions/index";
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     addLead: lead => dispatch(addLead(lead))
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    triggerRefetch: trigger => dispatch(triggerRefetch(trigger))
+  };
+};
 
-class Form extends Component {
+class ConnectedForm extends Component {
   static propTypes = {
     endpoint: PropTypes.string.isRequired
   };
@@ -41,6 +41,7 @@ class Form extends Component {
       }
       console.log(response);
       this.setState(this.baseState);
+      this.props.triggerRefetch(true);
     });
   };
 
@@ -99,6 +100,6 @@ class Form extends Component {
   }
 }
 
-// const Form = connect(null, mapDispatchToProps)(ConnectedForm);
+connect(null, mapDispatchToProps)(ConnectedForm);
 
-export default Form;
+export default ConnectedForm;

@@ -1,23 +1,23 @@
 import React from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import key from "weak-key";
 
-const mapStateToProps = state => {
-  return { 
-    data: state.leads,
-  };
-};
+// const mapStateToProps = state => {
+//   return { 
+//     data: state.leads,
+//   };
+// };
 
-const ConnectedTable = ({ data }) =>
+const Table = ({ data }) =>
   !data.length ? (
     <p>Nothing to show</p>
   ) : (
-    <div className="column">
+    <div className="column is-12">
       <h2 className="subtitle">
         Showing <strong>{data.length} items</strong>
       </h2>
-      <table className="table is-striped">
+      <table className="table is-striped" style={{width: "100%"}}>
         <thead>
           <tr>
             {Object.entries(data[0]).map(el => <th key={key(el)}>{el[0]}</th>)}
@@ -34,10 +34,10 @@ const ConnectedTable = ({ data }) =>
     </div>
   );
 
-ConnectedTable.propTypes = {
+Table.propTypes = {
   data: PropTypes.array.isRequired
 };
 
-const Table = connect(mapStateToProps) (ConnectedTable);
+// const Table = connect(mapStateToProps) (ConnectedTable);
 
 export default Table;
