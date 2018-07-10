@@ -10,7 +10,7 @@ const rootReducer = (state = initialState, action) => {
 		case ADD_LEAD:
 			return { ...state, leads: [...state.leads, action.payload] };
 		case TRIGGER_REFETCH:
-			return { ...state, triggerRefetch: action.payload };
+			return { ...state, triggerRefetch: !state.triggerRefetch };
 		default:
 			return state;
 	}

@@ -40,8 +40,8 @@ class Form extends Component {
         return this.setState({ placeholder: "Something went wrong" });
       }
       console.log(response);
-      this.props.triggerRefetch(true);
-      this.setState(this.baseState);      
+      this.props.triggerRefetch();
+      this.setState(this.baseState);
     });
   };
 

@@ -8,14 +8,14 @@ import ConnectedForm from "./ConnectedForm";
 
 const App = () => (
 	<div>
-		<React.Fragment>
+		{/*<React.Fragment>
 			<Form endpoint="api/lead/" />
 		</React.Fragment>
 
 		<React.Fragment>
 			<DataProvider endpoint="api/lead/" 
 			              render={data => <Table data={data} />} />
-		</React.Fragment>
+		</React.Fragment>*/}
 
 		<React.Fragment>
 			<ConnectedForm endpoint="api/lead/" />
