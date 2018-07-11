@@ -38,11 +38,11 @@ class Table extends Component {
     const { data, loaded, placeholder, refetch } = this.state;
     return this.props.triggerRefetch ? (
       !this.props.updateTableData.length ? (
-        <p>Nothing to show.</p>
+        <p className="has-text-centered has-text-danger">Nothing to show.</p>
       ) : (
         <div className="column is-12">
           <h2 className="subtitle">
-            Showing <strong>{this.props.updateTableData.length} items</strong>
+            Showing <strong className="has-text-primary">{this.props.updateTableData.length} items</strong>
           </h2>
           <table className="table is-striped" style={{width: "100%"}}>
             <thead>
@@ -63,11 +63,11 @@ class Table extends Component {
     ) : (
       loaded ? (
         !data.length ? (
-          <p>Nothing to show.</p>
+          <p className="has-text-centered has-text-danger">Nothing to show.</p>
         ) : (
           <div className="column is-12">
             <h2 className="subtitle">
-              Showing <strong>{data.length} items</strong>
+              Showing <strong className="has-text-primary">{data.length} items</strong>
             </h2>
             <table className="table is-striped" style={{width: "100%"}}>
               <thead>
@@ -85,7 +85,7 @@ class Table extends Component {
             </table>
           </div>
         )
-      ) : <p>{placeholder}</p>
+      ) : <p className="has-text-centered has-text-danger">{placeholder}</p>
     )
   }
 }
