@@ -1,4 +1,4 @@
-import { ADD_LEAD, TRIGGER_REFETCH } from "../constants/action-types";
+import { TRIGGER_REFETCH, UPDATE_TABLE_DATA } from "../constants/action-types";
 
-export const addLead = lead => ({ type: ADD_LEAD, payload: lead });
-export const triggerRefetch = () => ({ type: TRIGGER_REFETCH });
+export const triggerRefetch = trigger => ({ type: TRIGGER_REFETCH, payload: trigger });
+export const updateTableData = newdata => ({ type: UPDATE_TABLE_DATA, payload: newdata });

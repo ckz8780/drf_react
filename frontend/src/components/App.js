@@ -1,7 +1,7 @@
 import React from "react";
-import DataProvider from "./DataProvider";
-import Table from "./Table";
-import Form from "./Form";
+// import DataProvider from "./DataProvider";
+// import Table from "./Table";
+// import Form from "./Form";
 
 import ConnectedTable from "./ConnectedTable";
 import ConnectedForm from "./ConnectedForm";

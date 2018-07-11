@@ -1,16 +1,16 @@
-import { ADD_LEAD, TRIGGER_REFETCH } from "../constants/action-types";
+import { TRIGGER_REFETCH, UPDATE_TABLE_DATA } from "../constants/action-types";
 
 const initialState = {
-  leads: [],
   triggerRefetch: false,
+  updateTableData: [],
 };
 
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case ADD_LEAD:
-			return { ...state, leads: [...state.leads, action.payload] };
 		case TRIGGER_REFETCH:
-			return { ...state, triggerRefetch: !state.triggerRefetch };
+			return { ...state, triggerRefetch: action.payload };
+		case UPDATE_TABLE_DATA:
+			return { ...state, updateTableData: action.payload};
 		default:
 			return state;
 	}

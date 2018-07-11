@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { triggerRefetch } from "../js/actions/index";
+import { triggerRefetch, updateTableData } from "../js/actions/index";
 
 const mapDispatchToProps = dispatch => {
   return {
-    triggerRefetch: trigger => dispatch(triggerRefetch(trigger))
+    triggerRefetch: trigger => dispatch(triggerRefetch(trigger)),
+    updateTableData: data => dispatch(updateTableData(data))
   };
 };
 
@@ -39,9 +40,13 @@ class Form extends Component {
       if (response.status !== 201) {
         return this.setState({ placeholder: "Something went wrong" });
       }
-      console.log(response);
-      this.props.triggerRefetch();
+      this.props.triggerRefetch(true);
       this.setState(this.baseState);
+      fetch(this.props.endpoint).then(response => {
+        return response.json();
+      }).then(data => {
+        this.props.updateTableData(data);
+      });
     });
   };
 

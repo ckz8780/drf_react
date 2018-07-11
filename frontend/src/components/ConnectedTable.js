@@ -5,7 +5,8 @@ import key from "weak-key";
 
 const mapStateToProps = state => {
   return { 
-    triggerRefetch: state.triggerRefetch
+    triggerRefetch: state.triggerRefetch,
+    updateTableData: state.updateTableData
   };
 };
 
@@ -16,9 +17,10 @@ class Table extends Component {
   };
 
   state = {
-    data: [],
+    data: this.props.updateTableData,
     loaded: false,
-    placeholder: "Loading..."
+    placeholder: "Loading...",
+    refetch: this.props.triggerRefetch
   };
 
   componentDidMount() {
@@ -27,33 +29,29 @@ class Table extends Component {
         if (response.status !== 200) {
           return this.setState({ placeholder: "Something went wrong" });
         }
-        console.log('API Queried...');
         return response.json();
       })
       .then(data => this.setState({ data: data, loaded: true }));
   }
 
   render() {
-    const { data, loaded, placeholder } = this.state;
-    console.log(this.state);
-    console.log(this.props.triggerRefetch);
-    console.log(data, loaded, placeholder);
-    return loaded ? (
-      !data.length ? (
+    const { data, loaded, placeholder, refetch } = this.state;
+    return this.props.triggerRefetch ? (
+      !this.props.updateTableData.length ? (
         <p>Nothing to show.</p>
       ) : (
         <div className="column is-12">
           <h2 className="subtitle">
-            Showing <strong>{data.length} items</strong>
+            Showing <strong>{this.props.updateTableData.length} items</strong>
           </h2>
           <table className="table is-striped" style={{width: "100%"}}>
             <thead>
               <tr>
-                {Object.entries(data[0]).map(el => <th key={key(el)}>{el[0]}</th>)}
+                {Object.entries(this.props.updateTableData[0]).map(el => <th key={key(el)}>{el[0]}</th>)}
               </tr>
             </thead>
             <tbody>
-              {data.map(el => (
+              {this.props.updateTableData.map(el => (
                 <tr key={el.id}>
                   {Object.entries(el).map(el => <td key={key(el)}>{el[1]}</td>)}
                 </tr>
@@ -62,7 +60,33 @@ class Table extends Component {
           </table>
         </div>
       )
-    ) : <p>{placeholder}</p>;
+    ) : (
+      loaded ? (
+        !data.length ? (
+          <p>Nothing to show.</p>
+        ) : (
+          <div className="column is-12">
+            <h2 className="subtitle">
+              Showing <strong>{data.length} items</strong>
+            </h2>
+            <table className="table is-striped" style={{width: "100%"}}>
+              <thead>
+                <tr>
+                  {Object.entries(data[0]).map(el => <th key={key(el)}>{el[0]}</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {data.map(el => (
+                  <tr key={el.id}>
+                    {Object.entries(el).map(el => <td key={key(el)}>{el[1]}</td>)}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )
+      ) : <p>{placeholder}</p>
+    )
   }
 }
 
